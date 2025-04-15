@@ -16,43 +16,30 @@ pytesseract
 pillow
 opencv-python
 # Podstawowe zależności
-python-dotenv>=0.21.0
-psutil>=5.9.0
-pyautogui>=0.9.53
-pillow>=9.2.0
-numpy>=1.23.0
-opencv-python>=4.6.0
-pytesseract>=0.3.10
-pyperclip>=1.8.2
-
+psutil
+numpy
+pyperclip
 # Zależności dla obsługi interfejsu systemu
-pygetwindow>=0.0.9; platform_system == "Windows"
-pywinctl>=0.0.5; platform_system == "Linux" or platform_system == "Darwin"
-
+pygetwindow; platform_system == "Windows"
+pywinctl; platform_system == "Linux" or platform_system == "Darwin"
 # Zależności dla obsługi zdalnych połączeń
-paramiko>=2.11.0
-
 # Zależności dla obsługi email
-imaplib2>=3.6
-email-validator>=1.2.1
-
+imaplib2
+email-validator
 # Zależności dla przetwarzania języka naturalnego
-spacy>=3.4.0
-transformers>=4.24.0
-torch>=1.13.0
-tensorflow>=2.10.0; platform_system != "Windows" or python_version < "3.10"
-tensorflow-cpu>=2.10.0; platform_system == "Windows" and python_version >= "3.10"
-SpeechRecognition>=3.8.1
-pyaudio>=0.2.12
-python-Levenshtein>=0.12.2
-
+spacy
+transformers
+torch
+tensorflow; platform_system != "Windows" or python_version < "3.10"
+tensorflow-cpu; platform_system == "Windows" and python_version >= "3.10"
+SpeechRecognition
+pyaudio
+python-Levenshtein
 # Zależności opcjonalne dla pełnej funkcjonalności
-pandas>=1.5.0
-matplotlib>=3.6.0
-seaborn>=0.12.0
-scikit-learn>=1.1.0
-
+pandas
+matplotlib
+seaborn
+scikit-learn
 # Zależności do testowania
-pytest>=7.2.0
-pytest-cov>=4.0.0
-pytest-mock>=3.10.0
+pytest-cov
+pytest-mock

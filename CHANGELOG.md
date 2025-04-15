@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.2] - 2025-04-15
+
+### Added
+- Changes in update/duplicated.py
+- Changes in update/duplicated.sh
+- Changes in update/requirements.py
+- Changes in update/requirements.sh
+
 ## [0.1.1] - 2025-04-15
 
 ### Added

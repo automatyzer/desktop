@@ -1,6 +1,8 @@
 .idea
-
+requirements.txt.backup
 .xml
+.env
+.log
 .env.gitlab
 gitlab_deploy_key
 gitlab_deploy_key.pub
