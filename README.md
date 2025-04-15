@@ -1,6 +1,145 @@
 # desktop-bot
 
+# Desktop Automation Bot
 
+A powerful desktop automation tool that can connect via Remote Desktop Protocol (RDP) and perform actions based on text commands across different operating systems.
+
+## Features
+
+- Connect to remote computers via RDP
+- Automate mouse actions (clicking, scrolling)
+- Simulate keyboard inputs
+- Screen element detection through image recognition
+- Optical Character Recognition (OCR)
+- Email retrieval and code extraction
+- Cross-platform shell command execution
+
+## Prerequisites
+
+### System Dependencies
+- Python 3.8+
+- Tesseract OCR
+- Additional system libraries depending on your OS
+
+### Installation Steps
+
+1. Clone the repository
+```bash
+git clone https://github.com/automatyzer/desktop-bot.git
+cd desktop-bot
+```
+
+2. Create and activate a virtual environment
+```bash
+# On Windows
+python -m venv venv
+venv\Scripts\activate
+
+# On macOS/Linux
+python3 -m venv venv
+source venv/bin/activate
+```
+
+3. Install system dependencies
+
+#### Windows
+```powershell
+# Install Tesseract OCR from official website
+# Download and add to PATH: https://github.com/UB-Mannheim/tesseract/wiki
+pip install -r requirements.txt
+```
+
+#### Ubuntu/Debian
+```bash
+# Install system dependencies
+sudo apt-get update
+sudo apt-get install -y \
+    python3-pip \
+    python3-venv \
+    tesseract-ocr \
+    libgl1-mesa-glx \
+    xvfb \
+    xserver-xorg-video-dummy
+
+# Install Python dependencies
+pip install -r requirements.txt
+```
+
+#### macOS
+```bash
+# Install Tesseract via Homebrew
+brew install tesseract
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+4. Verify Installation
+```bash
+# Check installed modules
+pip list
+
+# Run the application
+python app.py
+```
+
+### Troubleshooting Common Issues
+
+#### Missing Module Errors
+If you encounter `ModuleNotFoundError`, ensure:
+- Virtual environment is activated
+- All requirements are installed with `pip install -r requirements.txt`
+- You're using the correct Python interpreter from the virtual environment
+
+#### Tesseract OCR Configuration
+- Ensure Tesseract is installed and accessible
+- Update `tesseract_path` in `config.ini` if needed
+
+### Usage Examples
+
+```python
+# Create bot instance
+bot = AutomationBot()
+
+# Connect via RDP
+bot.connect_rdp(host="example.com", username="user", password="pass")
+
+# Execute tasks
+bot.execute_task("open application firefox")
+bot.execute_task("login to linkedin portal")
+```
+
+### Command Line Usage
+
+```bash
+# Execute single task
+python automation_bot.py --task "open application firefox"
+
+# Run script with multiple tasks
+python automation_bot.py --script tasks.txt
+```
+
+### Configuration
+
+Customize `config.ini` for:
+- RDP Connection settings
+- Email retrieval
+- Delay between actions
+- Tesseract OCR path
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+## Disclaimer
+
+This tool is for educational and authorized testing purposes only. Always obtain proper authorization before accessing remote systems.
 
 
 ## Quick Start
@@ -13,65 +152,3 @@ source venv/bin/activate
 pip install -r requirements.txt
 python app.py
 ```
-
-
-
-### Server Deployment
-1. Copy files to server
-2. Run deployment script
-```bash
-sudo bash deploy.sh
-```
-
-
-
-2. Sprawdź, czy port 5000 jest dostępny:
-```bash
-curl http://localhost:5000
-```
-
-
-Stworzę dla Ciebie bota, który będzie mógł łączyć się z komputerem przez Remote Desktop Protocol (RDP) i wykonywać czynności na podstawie poleceń tekstowych, zamieniając je na akcje myszki, klawiatury oraz komendy powłoki w różnych systemach operacyjnych.
-
-Stworzyłem bota, który może łączyć się przez Remote Desktop z komputerem i wykonywać zadania na podstawie poleceń tekstowych. Bot ten potrafi:
-
-1. Łączyć się z komputerem przez RDP (Remote Desktop Protocol)
-2. Automatycznie wykonywać akcje myszy (klikanie, przewijanie)
-3. Symulować naciskanie klawiszy
-4. Wyszukiwać elementy na ekranie przez rozpoznawanie obrazów
-5. Odczytywać tekst z ekranu za pomocą OCR
-6. Pobierać wiadomości email i wyciągać z nich kody
-7. Wykonywać komendy powłoki w różnych systemach
-
-### Przykład użycia bota:
-
-```python
-# Instalacja wymaganych bibliotek
-# pip install pyautogui paramiko pytesseract pillow opencv-python
-
-# Stworzenie instancji bota
-bot = AutomationBot()
-
-# Połączenie przez RDP
-bot.connect_rdp(host="komputer.example.com", username="user", password="haslo")
-
-# Przykład wykonania zadania z Twojego przykładu
-bot.execute_task("otworz aplikacje o nazwie firefox i zaloguj sie do portalu linkedin")
-bot.execute_task("pobierz z programu pocztowego ze skrzynki test@email.com ostatnia wiadomosci aby wpisac kod z wiadomosci do uwierzytelnienia")
-```
-
-Bot można także uruchomić z linii poleceń:
-
-```bash
-python automation_bot.py --task "otworz aplikacje o nazwie firefox i zaloguj sie do portalu linkedin"
-```
-
-Lub wykonać wiele zadań z pliku skryptowego:
-
-```bash
-python automation_bot.py --script zadania.txt
-```
-
-Gdzie plik `zadania.txt` zawiera listę poleceń, po jednym w każdej linii.
-
-Bot wymaga kilku bibliotek Pythona, które należy zainstalować przed użyciem, a także programu Tesseract OCR do odczytywania tekstu z ekranu.
