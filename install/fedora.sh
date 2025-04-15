@@ -146,16 +146,16 @@ dnf install -y \
     libXi-devel
 
 # Create project directory
-PROJECT_DIR="/opt/desktop-bot"
-mkdir -p "$PROJECT_DIR"
+#PROJECT_DIR="/opt/desktop-bot"
+#mkdir -p "$PROJECT_DIR"
 
 # Clone project (replace with actual repository URL)
-echo "Cloning desktop automation bot repository..."
-git clone https://github.com/yourusername/desktop-bot.git "$PROJECT_DIR"
+#echo "Cloning desktop automation bot repository..."
+#git clone https://github.com/yourusername/desktop-bot.git "$PROJECT_DIR"
 
 # Setup Python virtual environment
 echo "Setting up Python virtual environment..."
-cd "$PROJECT_DIR"
+#cd "$PROJECT_DIR"
 python3 -m venv venv
 source venv/bin/activate
 
