@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.3] - 2025-04-15
+
+### Added
+- Changes in tests/test_actions.ipynb
+- Changes in update/pip.sh
+
 ## [0.1.2] - 2025-04-15
 
 ### Added
