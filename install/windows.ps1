@@ -87,7 +87,7 @@ function Setup-ProjectEnvironment {
     # Clone repository (replace with actual repository URL)
     if (!(Test-Path -Path "$ProjectDir\.git")) {
         Write-Host "Cloning desktop automation bot repository..." -ForegroundColor Cyan
-        git clone https://github.com/yourusername/desktop-bot.git .
+        git clone https://github.com/automatyzer/desktop-bot.git .
     }
 
     # Create virtual environment
@@ -103,14 +103,11 @@ function Setup-ProjectEnvironment {
     # Install project dependencies
     pip install -r requirements.txt
 
-    # Install additional dependencies
-    pip install \
-        pyautogui \
-        paramiko \
-        pytesseract \
-        pillow \
-        opencv-python \
-        requests
+    # Verify all requirements are installed
+    pip install lxml python-dotenv apscheduler schedule requests \
+                flask flask-cors flask-limiter gunicorn pytest \
+                werkzeug termcolor pyautogui paramiko pytesseract \
+                pillow opencv-python
 
     Write-Host "Project environment setup complete!" -ForegroundColor Green
 }

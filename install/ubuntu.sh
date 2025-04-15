@@ -66,8 +66,11 @@ pip install --upgrade pip setuptools wheel
 # Install Python dependencies
 pip install -r requirements.txt
 
-# Additional PyAutoGUI dependencies
-pip install pyautogui paramiko pytesseract pillow opencv-python
+# Verify all requirements are installed
+pip install lxml python-dotenv apscheduler schedule requests \
+            flask flask-cors flask-limiter gunicorn pytest \
+            werkzeug termcolor pyautogui paramiko pytesseract \
+            pillow opencv-python
 
 # Set permissions
 chown -R $(logname):$(logname) "$PROJECT_DIR"

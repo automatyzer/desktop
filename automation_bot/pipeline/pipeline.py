@@ -1,0 +1,5 @@
+# Klasa pipeline
+"""
+pipeline.py
+"""
+

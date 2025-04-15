@@ -17,8 +17,8 @@ from email.header import decode_header
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import configparser
 import argparse
+from dotenv import load_dotenv
 
 # Konfiguracja logowania
 logging.basicConfig(
@@ -34,65 +34,34 @@ logger = logging.getLogger("AutomationBot")
 
 
 class AutomationBot:
-    def __init__(self, config_file=None):
-        self.config = configparser.ConfigParser()
+    def __init__(self, env_file='.env'):
+        # Załaduj zmienne środowiskowe
+        load_dotenv(env_file)
 
-        if config_file and os.path.exists(config_file):
-            self.config.read(config_file)
-        else:
-            # Domyślna konfiguracja
-            self.config['DEFAULT'] = {
-                'delay_between_actions': '0.5',
-                'screenshot_folder': 'screenshots',
-                'tesseract_path': r'C:\Program Files\Tesseract-OCR\tesseract.exe' if platform.system() == 'Windows' else '/usr/bin/tesseract'
-            }
-
-            self.config['email'] = {
-                'imap_server': '',
-                'smtp_server': '',
-                'port': '993',
-                'smtp_port': '587',
-                'username': '',
-                'password': ''
-            }
-
-            self.config['rdp'] = {
-                'host': 'localhost',
-                'username': '',
-                'password': '',
-                'port': '3389',
-                'resolution': '1920x1080'
-            }
-
-            # Zapisanie domyślnej konfiguracji
-            if not config_file:
-                config_file = 'config.ini'
-
-            with open(config_file, 'w') as f:
-                self.config.write(f)
+        # Konfiguracja podstawowa
+        self.delay = float(os.environ.get('DELAY_BETWEEN_ACTIONS', '0.5'))
+        self.screenshot_folder = os.environ.get('SCREENSHOT_FOLDER', 'screenshots')
 
         # Upewnij się, że folder na zrzuty ekranu istnieje
-        self.screenshot_folder = self.config['DEFAULT']['screenshot_folder']
         os.makedirs(self.screenshot_folder, exist_ok=True)
 
-        # Konfiguracja Tesseract OCR
+        # Konfiguracja Tesseract OCR dla Windows
         if platform.system() == 'Windows':
-            pytesseract.pytesseract.tesseract_cmd = self.config['DEFAULT']['tesseract_path']
-
-        self.delay = float(self.config['DEFAULT']['delay_between_actions'])
+            tesseract_path = os.environ.get('TESSERACT_PATH', r'C:\Program Files\Tesseract-OCR\tesseract.exe')
+            pytesseract.pytesseract.tesseract_cmd = tesseract_path
 
     def connect_rdp(self, host=None, username=None, password=None, port=None, resolution=None):
         """Nawiązuje połączenie przez RDP z odległym komputerem"""
         if not host:
-            host = self.config['rdp']['host']
+            host = os.environ.get('RDP_HOST', 'localhost')
         if not username:
-            username = self.config['rdp']['username']
+            username = os.environ.get('RDP_USERNAME', '')
         if not password:
-            password = self.config['rdp']['password']
+            password = os.environ.get('RDP_PASSWORD', '')
         if not port:
-            port = self.config['rdp']['port']
+            port = os.environ.get('RDP_PORT', '3389')
         if not resolution:
-            resolution = self.config['rdp']['resolution']
+            resolution = os.environ.get('RDP_RESOLUTION', '1920x1080')
 
         if platform.system() == 'Windows':
             # Użycie wbudowanego klienta RDP na Windows
@@ -127,6 +96,11 @@ class AutomationBot:
 
     def execute_shell_command(self, command, remote_host=None, remote_user=None, remote_password=None):
         """Wykonuje komendę powłoki lokalnie lub na zdalnym hoście przez SSH"""
+        if not remote_host and not remote_user:
+            remote_host = os.environ.get('SSH_HOST', '')
+            remote_user = os.environ.get('SSH_USERNAME', '')
+            remote_password = os.environ.get('SSH_PASSWORD', '')
+
         if remote_host:
             # Wykonanie komendy na zdalnym hoście przez SSH
             try:
@@ -266,11 +240,11 @@ class AutomationBot:
     def get_email(self, email_address, subject_filter=None, max_emails=1):
         """Pobiera wiadomości z określonego adresu email"""
         try:
-            # Konfiguracja z pliku
-            server = self.config['email']['imap_server']
-            port = int(self.config['email']['port'])
-            username = self.config['email']['username']
-            password = self.config['email']['password']
+            # Konfiguracja z pliku .env
+            server = os.environ.get('EMAIL_IMAP_SERVER', '')
+            port = int(os.environ.get('EMAIL_PORT', '993'))
+            username = os.environ.get('EMAIL_USERNAME', '')
+            password = os.environ.get('EMAIL_PASSWORD', '')
 
             # Połączenie z serwerem IMAP
             mail = imaplib.IMAP4_SSL(server, port)
@@ -347,8 +321,11 @@ class AutomationBot:
             logger.error(f"Błąd podczas pobierania email: {str(e)}")
             return []
 
-    def extract_code_from_email(self, email_body, regex_pattern=r'\b\d{6}\b'):
+    def extract_code_from_email(self, email_body, regex_pattern=None):
         """Wyciąga kod z treści wiadomości email za pomocą wyrażenia regularnego"""
+        if regex_pattern is None:
+            regex_pattern = os.environ.get('AUTH_CODE_REGEX', r'\b\d{6}\b')
+
         match = re.search(regex_pattern, email_body)
         if match:
             code = match.group(0)
@@ -419,22 +396,22 @@ class AutomationBot:
                 username_field = self.wait_for_image('linkedin_username_field.png')
                 if username_field:
                     self.click(username_field[0], username_field[1])
-                    # Pobierz dane logowania z konfiguracji
-                    username = self.config.get('linkedin', 'username', fallback='')
+                    # Pobierz dane logowania z pliku .env
+                    username = os.environ.get('LINKEDIN_USERNAME', '')
                     if username:
                         self.type_text(username)
                     else:
-                        logger.error("Brak nazwy użytkownika dla LinkedIn w konfiguracji")
+                        logger.error("Brak nazwy użytkownika dla LinkedIn w pliku .env")
                         return False
 
                     # Przejdź do pola hasła
                     self.press_key('tab')
 
-                    password = self.config.get('linkedin', 'password', fallback='')
+                    password = os.environ.get('LINKEDIN_PASSWORD', '')
                     if password:
                         self.type_text(password)
                     else:
-                        logger.error("Brak hasła dla LinkedIn w konfiguracji")
+                        logger.error("Brak hasła dla LinkedIn w pliku .env")
                         return False
 
                     # Kliknij przycisk zaloguj
@@ -482,7 +459,8 @@ class AutomationBot:
 
                 if not result:
                     logger.error(f"Nie udało się wykonać zadania: {line}")
-                    if self.config.getboolean('DEFAULT', 'stop_on_error', fallback=False):
+                    stop_on_error = os.environ.get('STOP_ON_ERROR', 'False').lower() == 'true'
+                    if stop_on_error:
                         break
             return True
 
@@ -493,20 +471,20 @@ class AutomationBot:
 
 def main():
     parser = argparse.ArgumentParser(description='Bot do automatyzacji zadań przez Remote Desktop')
-    parser.add_argument('--config', type=str, help='Ścieżka do pliku konfiguracyjnego')
+    parser.add_argument('--env', type=str, default='.env', help='Ścieżka do pliku .env')
     parser.add_argument('--script', type=str, help='Ścieżka do pliku ze skryptem zadań')
     parser.add_argument('--task', type=str, help='Zadanie do wykonania (opisane tekstem)')
-    parser.add_argument('--rdp-host', type=str, help='Host do połączenia RDP')
-    parser.add_argument('--rdp-user', type=str, help='Nazwa użytkownika RDP')
-    parser.add_argument('--rdp-pass', type=str, help='Hasło RDP')
+    parser.add_argument('--rdp-host', type=str, help='Host do połączenia RDP (nadpisuje wartość z .env)')
+    parser.add_argument('--rdp-user', type=str, help='Nazwa użytkownika RDP (nadpisuje wartość z .env)')
+    parser.add_argument('--rdp-pass', type=str, help='Hasło RDP (nadpisuje wartość z .env)')
 
     args = parser.parse_args()
 
     # Inicjalizacja bota
-    bot = AutomationBot(config_file=args.config)
+    bot = AutomationBot(env_file=args.env)
 
-    # Połączenie RDP jeśli podano parametry
-    if args.rdp_host:
+    # Połączenie RDP jeśli podano parametry lub są w .env
+    if args.rdp_host or os.environ.get('RDP_HOST'):
         bot.connect_rdp(
             host=args.rdp_host,
             username=args.rdp_user,
@@ -521,7 +499,6 @@ def main():
     else:
         print("Nie podano zadania ani skryptu do wykonania. Użyj --task lub --script")
         parser.print_help()
-
 
 if __name__ == "__main__":
     main()

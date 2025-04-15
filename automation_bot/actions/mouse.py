@@ -1,0 +1,5 @@
+# Akcje myszy
+"""
+mouse.py
+"""
+

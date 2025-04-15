@@ -1,99 +1,77 @@
-# Desktop Automation Bot - linux environment Setup Scripts
+## Troubleshooting PyAutoGUI Installation
 
-## Overview
+### Linux-Specific PyAutoGUI Issues
 
-These scripts automate the setup of the desktop automation bot environment on different Linux distributions.
+#### Common Problems
+- Missing system libraries
+- X11 dependencies not installed
+- Virtual environment configuration issues
 
-## Prerequisites
+#### Troubleshooting Steps
 
-- A Linux system (Ubuntu or Fedora)
-- `sudo` access
-- Internet connection
+1. **Install System Dependencies**
+   ```bash
+   # Fedora
+   sudo dnf install -y \
+       python3-devel \
+       libXtst-devel \
+       libXi-devel \
+       libxkbcommon-devel \
+       scrot \
+       python3-xlib
 
-## Supported Distributions
+   # Ubuntu
+   sudo apt-get install -y \
+       python3-dev \
+       libxtst-dev \
+       libxi-dev \
+       libxkbcommon-dev \
+       scrot \
+       python3-xlib
+   ```
 
-- Ubuntu 20.04 and newer
-- Fedora 33 and newer
+2. **Verify Virtual Environment**
+   ```bash
+   # Activate virtual environment
+   source venv/bin/activate
 
-## Usage
+   # Upgrade pip and setuptools
+   pip install --upgrade pip setuptools wheel
 
-### Ubuntu
+   # Reinstall PyAutoGUI
+   pip install --upgrade pyautogui
+   ```
 
-```bash
-# Download the script
-wget https://raw.githubusercontent.com/automatyzer/desktop-bot/main/ubuntu_setup.sh
+3. **Test PyAutoGUI Installation**
+   ```python
+   # Python test script
+   import pyautogui
+   print(pyautogui.position())  # Should print current mouse position
+   ```
 
-# Make executable
-chmod +x ubuntu_setup.sh
+### Potential Error Messages
 
-# Run with sudo
-sudo bash ubuntu_setup.sh
-```
+- `ModuleNotFoundError: No module named 'pyautogui'`
+  - Solution: Ensure virtual environment is activated
+  - Reinstall PyAutoGUI with `pip install pyautogui`
 
-### Fedora
+- `ImportError` related to X11 or system libraries
+  - Solution: Install additional system dependencies
+  - Verify X11 libraries are present
 
-```bash
-# Download the script
-wget https://raw.githubusercontent.com/automatyzer/desktop-bot/main/fedora_setup.sh
+### Debugging Information
 
-# Make executable
-chmod +x fedora_setup.sh
+If issues persist:
+1. Check Python version: `python --version`
+2. List installed packages: `pip list`
+3. Verify system libraries: `ldconfig -p | grep libX`
 
-# Run with sudo
-sudo bash fedora_setup.sh
-```
+## Advanced Configuration
 
-## What the Scripts Do
-
-1. Update system packages
-2. Install system dependencies
-3. Install Python and virtual environment
-4. Clone the desktop automation bot repository
-5. Setup Python virtual environment
-6. Install Python dependencies
-7. Configure system for GUI automation
-
-## Post-Installation
-
-After running the script:
-- The project is installed in `/opt/desktop-bot`
-- A virtual environment is created
-- Activate the environment with: 
-  ```bash
-  source /opt/desktop-bot/venv/bin/activate
-  ```
-
-## Troubleshooting
-
-- Ensure you have `sudo` access
-- Check internet connection
-- Verify Python 3.8+ is installed
-- If any dependency fails, you may need to install it manually
-
-## Security Notes
-
-- Review the script before running
-- Only download from trusted sources
-- The script requires root access, so use caution
-
-## Customization
-
-Modify the scripts to:
-- Change installation directory
-- Add/remove specific dependencies
-- Adjust Python version
-
-## Contributing
-
-- Report issues on the GitHub repository
-- Submit pull requests with improvements
-
-## License
-
-# Windows 
-
-
-# Desktop Automation Bot - Windows Setup Guide
+For users experiencing persistent issues:
+- Consider using alternative automation libraries
+- Check system compatibility
+- Consult project documentation# Desktop Automation Bot - Windows Setup Guide
 
 ## Prerequisites
 
@@ -117,7 +95,7 @@ Modify the scripts to:
 3. **Execute Setup Script**
    ```powershell
    # Navigate to script location
-   cd C:\Users\automatyzer\Downloads
+   cd C:\Users\YourUsername\Downloads
 
    # Allow script execution
    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -156,7 +134,7 @@ Modify the scripts to:
    cd C:\Projects\desktop-bot
 
    # Clone repository
-   git clone https://github.com/automatyzer/desktop-bot.git .
+   git clone https://github.com/yourusername/desktop-bot.git .
 
    # Create virtual environment
    python -m venv venv
@@ -166,6 +144,28 @@ Modify the scripts to:
    pip install -r requirements.txt
    ```
 
+```bash
+# Navigate to your project directory
+cd /path/to/desktop-bot
+
+# Remove existing virtual environment if it exists
+rm -rf venv
+
+# Create new virtual environment
+python -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate
+
+# Upgrade pip and setuptools
+pip install --upgrade pip setuptools wheel
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Explicitly install PyAutoGUI with additional dependencies
+pip install pyautogui python3-xlib
+```
 ## Post-Installation
 
 ### Activate Virtual Environment
@@ -225,6 +225,8 @@ python app.py
 - Submit pull requests with improvements
 
 ## License
+
+[Specify your project's license]
 
 ## Support
 
