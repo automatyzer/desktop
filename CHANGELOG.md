@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.10] - 2025-04-15
+
+### Added
+- Changes in install/SPACY.md
+- Changes in install/pyautogui.md
+- Changes in install/pyautogui.py
+
 ## [0.1.9] - 2025-04-15
 
 ### Added
