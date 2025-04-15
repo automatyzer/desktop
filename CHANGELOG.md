@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.5] - 2025-04-15
+
+### Added
+- Changes in install/pyaudio.py
+- Changes in install/pyaudio.sh
+- Changes in install/pyaudio2.py
+- Changes in install/pyaudio2.sh
+- Changes in install/pyaudio3.sh
+- Changes in install/pyaudiodiag.py
+
 ## [0.1.4] - 2025-04-15
 
 ### Removed

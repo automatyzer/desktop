@@ -82,7 +82,7 @@ except FileNotFoundError:
 # Konfiguracja instalacji
 setup(
     name="automatyzer_desktop",
-    version="0.1.1",
+    version="0.1.2",
     description="Bot do automatyzacji zadań poprzez Remote Desktop",
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",

@@ -15,18 +15,13 @@ paramiko
 pytesseract
 pillow
 opencv-python
-# Podstawowe zależności
 psutil
 numpy
 pyperclip
-# Zależności dla obsługi interfejsu systemu
 pygetwindow; platform_system == "Windows"
 pywinctl; platform_system == "Linux" or platform_system == "Darwin"
-# Zależności dla obsługi zdalnych połączeń
-# Zależności dla obsługi email
 imaplib2
 email-validator
-# Zależności dla przetwarzania języka naturalnego
 spacy
 transformers
 torch
@@ -35,11 +30,9 @@ tensorflow-cpu; platform_system == "Windows" and python_version >= "3.10"
 SpeechRecognition
 pyaudio
 python-Levenshtein
-# Zależności opcjonalne dla pełnej funkcjonalności
 pandas
 matplotlib
 seaborn
 scikit-learn
-# Zależności do testowania
 pytest-cov
 pytest-mock
