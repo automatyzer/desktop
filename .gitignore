@@ -1,3 +1,11 @@
+.idea
+
+.xml
+.env.gitlab
+gitlab_deploy_key
+gitlab_deploy_key.pub
+gitlab_deployment_key
+gitlab_deployment_key.pub
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

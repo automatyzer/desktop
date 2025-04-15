@@ -1,0 +1,12 @@
+lxml
+python-dotenv
+apscheduler
+schedule
+requests
+flask
+flask-cors
+flask-limiter
+gunicorn
+pytest
+werkzeug
+termcolor
