@@ -10,3 +10,8 @@ gunicorn
 pytest
 werkzeug
 termcolor
+pyautogui
+paramiko
+pytesseract
+pillow
+opencv-python
