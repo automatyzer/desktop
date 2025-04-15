@@ -1,6 +1,7 @@
 .idea
 requirements.txt.backup
 .xml
+failed_upgrades.txt
 .env
 .log
 .env.gitlab

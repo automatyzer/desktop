@@ -74,27 +74,27 @@ EXTRAS['all'] = [pkg for group in EXTRAS.values() for pkg in group]
 
 # Długi opis z pliku README.md
 try:
-    with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'README.md'), encoding='utf-8') as f:
+    with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'README.md'), encoding="utf-8') as f:
         LONG_DESCRIPTION = '\n' + f.read()
 except FileNotFoundError:
     LONG_DESCRIPTION = ''
 
 # Konfiguracja instalacji
 setup(
-    name='automatyzer_desktop',
-    version='0.1.0',
-    description='Bot do automatyzacji zadań poprzez Remote Desktop',
+    name="automatyzer_desktop",
+    version="0.1.2",
+    description="Bot do automatyzacji zadań poprzez Remote Desktop",
     long_description=LONG_DESCRIPTION,
-    long_description_content_type='text/markdown',
-    author='Twórca Bota',
-    author_email='autor@example.com',
-    python_requires='>=3.7.0',
-    url='https://github.com/username/automatyzer_desktop',
+    long_description_content_type="text/markdown",
+    author="Tom Sapletta",
+    author_email="info@softreck.dev",
+    python_requires=">=3.7.0",
+    url="https://github.com/automatyzer/desktop",
     packages=find_packages(exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
     install_requires=REQUIRED,
     extras_require=EXTRAS,
     include_package_data=True,
-    license='MIT',
+    license="MIT",
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
