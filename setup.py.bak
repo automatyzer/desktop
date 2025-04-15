@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="2print",
-    version="0.1.26",
-    description="Print from html to pdf, zpl, image, printer: html to print, html2print, html to pdf,html2pdf, pdf to print, pdf2print, zpl to print,zpl2print, image to print,  image2print, ",
+    name="automatyzer",
+    version="0.1.27",
+    description="Print from html to pdf, zpl, image, printer: html to print, htmlautomatyzer, html to pdf,html2pdf, pdf to print, pdfautomatyzer, zpl to print,zplautomatyzer, image to print,  imageautomatyzer, ",
     author="Tom Softreck",
     author_email="info@softreck.dev",
-    url="https://github.com/2print/2print",
+    url="https://github.com/automatyzer/automatyzer",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     classifiers=[

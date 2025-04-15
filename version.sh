@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 # Zainstaluj w trybie edytowalnym
 pip install -e .
-python increment_init.py -f src/2print/__init__.py
+python increment_init.py -f src/automatyzer/__init__.py
 python increment_setup.py
 python increment_version.py
 python increment_project.py

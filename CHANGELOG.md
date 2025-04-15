@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.6] - 2025-04-15
+
+### Added
+- Changes in automatyzer/README.md
+- Changes in automatyzer/__init__.py
+- Changes in automatyzer/actions/__init__.py
+- Changes in automatyzer/actions/app.py
+- Changes in automatyzer/actions/app/base.py
+- Changes in automatyzer/actions/app/close.py
+- Changes in automatyzer/actions/app/open.py
+- Changes in automatyzer/actions/base.py
+- Changes in automatyzer/actions/browser.py
+- Changes in automatyzer/actions/email.py
+- Changes in automatyzer/actions/keyboard.py
+- Changes in automatyzer/actions/mouse.py
+- Changes in automatyzer/actions/screen.py
+- Changes in automatyzer/actions/system.py
+- Changes in automatyzer/cli/__init__.py
+- Changes in automatyzer/cli/commands.py
+- Changes in automatyzer/cli/main.py
+- Changes in automatyzer/connectors/__init__.py
+- Changes in automatyzer/connectors/email_connector.py
+- Changes in automatyzer/connectors/http.py
+- Changes in automatyzer/connectors/rdp.py
+- Changes in automatyzer/connectors/ssh.py
+- Changes in automatyzer/core/__init__.py
+- Changes in automatyzer/core/bot.py
+- Changes in automatyzer/core/config.py
+- Changes in automatyzer/core/logger.py
+- Changes in automatyzer/dsl/__init__.py
+- Changes in automatyzer/dsl/grammar.py
+- Changes in automatyzer/dsl/interpreter.py
+- Changes in automatyzer/dsl/lexer.py
+- Changes in automatyzer/dsl/parser.py
+- Changes in automatyzer/nlp/__init__.py
+- Changes in automatyzer/nlp/command_generator.py
+- Changes in automatyzer/nlp/entity_extractor.py
+- Changes in automatyzer/nlp/intent_parser.py
+- Changes in automatyzer/nlp/speech_to_text.py
+- Changes in automatyzer/pipeline/__init__.py
+- Changes in automatyzer/pipeline/builder.py
+- Changes in automatyzer/pipeline/condition.py
+- Changes in automatyzer/pipeline/pipeline.py
+- Changes in automatyzer/pipeline/step.py
+- Changes in automatyzer/utils/__init__.py
+- Changes in automatyzer/utils/image_utils.py
+- Changes in automatyzer/utils/ocr.py
+- Changes in automatyzer/utils/text_utils.py
+- Changes in automatyzer/utils/validators.py
+
 ## [0.1.5] - 2025-04-15
 
 ## [0.1.4] - 2025-04-15
