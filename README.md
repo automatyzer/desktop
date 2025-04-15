@@ -113,10 +113,10 @@ bot.execute_task("login to linkedin portal")
 
 ```bash
 # Execute single task
-python automation_bot.py --task "open application firefox"
+python automatyzer_desktop.py --task "open application firefox"
 
 # Run script with multiple tasks
-python automation_bot.py --script tasks.txt
+python automatyzer_desktop.py --script tasks.txt
 ```
 
 ### Configuration

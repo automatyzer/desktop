@@ -13,9 +13,9 @@ Pozwala na wygodne budowanie złożonych sekwencji kroków.
 
 import logging
 from typing import Any, Dict, Optional, Callable, List, Union, Type
-from automation_bot.pipeline.pipeline import Pipeline
-from automation_bot.pipeline.step import PipelineStep
-from automation_bot.actions.base import BaseAction
+from automatyzer_desktop.pipeline.pipeline import Pipeline
+from automatyzer_desktop.pipeline.step import PipelineStep
+from automatyzer_desktop.actions.base import BaseAction
 
 
 class PipelineBuilder:

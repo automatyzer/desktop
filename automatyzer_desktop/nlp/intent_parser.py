@@ -16,7 +16,7 @@ import logging
 from typing import Dict, List, Any, Optional, Tuple, Set
 import spacy
 from spacy.matcher import Matcher, PhraseMatcher
-from automation_bot.nlp.entity_extractor import EntityExtractor
+from automatyzer_desktop.nlp.entity_extractor import EntityExtractor
 
 
 class IntentData:

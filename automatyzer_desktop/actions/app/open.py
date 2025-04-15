@@ -12,7 +12,7 @@ import logging
 import subprocess
 from typing import Any, Dict, Optional, List, Union
 
-from automation_bot.actions.app.base import AppBaseAction
+from automatyzer_desktop.actions.app.base import AppBaseAction
 
 
 class OpenApplicationAction(AppBaseAction):

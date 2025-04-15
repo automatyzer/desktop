@@ -12,7 +12,7 @@ import subprocess
 import platform
 from typing import Any, Dict, Optional, Union
 
-from automation_bot.actions.app.base import AppBaseAction
+from automatyzer_desktop.actions.app.base import AppBaseAction
 
 
 class CloseApplicationAction(AppBaseAction):

@@ -9,7 +9,7 @@ import logging
 import platform
 from typing import Dict, Any
 
-from automation_bot.actions.base import BaseAction
+from automatyzer_desktop.actions.base import BaseAction
 
 
 class AppBaseAction(BaseAction):

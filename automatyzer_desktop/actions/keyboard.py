@@ -15,7 +15,7 @@ import logging
 from typing import Any, Dict, Optional, List, Union
 import pyautogui
 
-from automation_bot.actions.base import BaseAction
+from automatyzer_desktop.actions.base import BaseAction
 
 
 class TypeTextAction(BaseAction):

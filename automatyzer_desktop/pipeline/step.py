@@ -12,7 +12,7 @@ Implementacja kroku w pipeline do automatyzacji zadań.
 
 import logging
 from typing import Any, Dict, Optional, Callable, List, Union, Tuple
-from automation_bot.actions.base import BaseAction
+from automatyzer_desktop.actions.base import BaseAction
 
 
 class PipelineStep:

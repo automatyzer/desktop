@@ -12,13 +12,13 @@ Interpreter kodu DSL, który wykonuje instrukcje na podstawie drzewa składniowe
 
 import logging
 from typing import Any, Dict, List, Optional, Union
-from automation_bot.dsl.grammar import (
+from automatyzer_desktop.dsl.grammar import (
     ASTNode, CommandNode, AssignmentNode,
     VariableNode, LiteralNode, BlockNode, ConditionalNode,
     LoopNode, PipelineNode
 )
-from automation_bot.dsl.lexer import Lexer
-from automation_bot.dsl.parser import Parser
+from automatyzer_desktop.dsl.lexer import Lexer
+from automatyzer_desktop.dsl.parser import Parser
 
 
 class InterpreterError(Exception):

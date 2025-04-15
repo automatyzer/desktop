@@ -12,7 +12,7 @@ Lekser do tokenizacji kodu DSL.
 
 import re
 from typing import List, Iterator, Tuple, Optional
-from automation_bot.dsl.grammar import Token, TokenType, KEYWORDS, COMPILED_PATTERNS
+from automatyzer_desktop.dsl.grammar import Token, TokenType, KEYWORDS, COMPILED_PATTERNS
 
 
 class LexerError(Exception):

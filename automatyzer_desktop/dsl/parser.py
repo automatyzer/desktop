@@ -11,7 +11,7 @@ Parser kodu DSL, który tworzy drzewo składniowe (AST) na podstawie tokenów.
 """
 
 from typing import List, Dict, Any, Optional
-from automation_bot.dsl.grammar import (
+from automatyzer_desktop.dsl.grammar import (
     Token, TokenType, ASTNode, CommandNode, AssignmentNode,
     VariableNode, LiteralNode, BlockNode, ConditionalNode,
     LoopNode, PipelineNode

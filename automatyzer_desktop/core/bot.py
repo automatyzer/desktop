@@ -16,13 +16,13 @@ import logging
 import os
 from typing import Any, Dict, List, Optional, Union, Type
 
-from automation_bot.core.config import Config
-from automation_bot.actions.base import BaseAction
-from automation_bot.pipeline.pipeline import Pipeline
-from automation_bot.pipeline.builder import PipelineBuilder
-from automation_bot.dsl.interpreter import DSLInterpreter
-from automation_bot.nlp.intent_parser import IntentParser
-from automation_bot.nlp.command_generator import CommandGenerator
+from automatyzer_desktop.core.config import Config
+from automatyzer_desktop.actions.base import BaseAction
+from automatyzer_desktop.pipeline.pipeline import Pipeline
+from automatyzer_desktop.pipeline.builder import PipelineBuilder
+from automatyzer_desktop.dsl.interpreter import DSLInterpreter
+from automatyzer_desktop.nlp.intent_parser import IntentParser
+from automatyzer_desktop.nlp.command_generator import CommandGenerator
 
 
 class AutomationBot:
@@ -61,7 +61,7 @@ class AutomationBot:
         Rejestruje wszystkie dostępne akcje na podstawie plików w katalogu actions.
         """
         # Importujemy moduły dynamicznie
-        actions_path = 'automation_bot.actions'
+        actions_path = 'automatyzer_desktop.actions'
         actions_package = importlib.import_module(actions_path)
 
         # Znajdź wszystkie moduły w pakiecie actions

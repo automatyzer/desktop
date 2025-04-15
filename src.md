@@ -1,11 +1,11 @@
-automation_bot/
+automatyzer_desktop/
 │
 ├── .env                      # Plik z konfiguracją i danymi wrażliwymi
 ├── requirements.txt          # Zależności projektu
 ├── setup.py                  # Instalacja pakietu
 ├── README.md                 # Dokumentacja projektu
 │
-├── automation_bot/           # Główny pakiet
+├── automatyzer_desktop/           # Główny pakiet
 │   ├── __init__.py           # Inicjalizacja pakietu
 │   │
 │   ├── core/                 # Rdzeń bota

@@ -18,7 +18,7 @@ import subprocess
 import shutil
 from typing import Any, Dict, Optional, List, Union
 
-from automation_bot.actions.base import BaseAction
+from automatyzer_desktop.actions.base import BaseAction
 
 
 class OpenApplicationAction(BaseAction):

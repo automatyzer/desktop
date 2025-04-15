@@ -18,8 +18,8 @@ import cv2
 import numpy as np
 from PIL import ImageGrab, Image
 
-from automation_bot.actions.base import BaseAction
-from automation_bot.utils.image_utils import find_image_on_screen
+from automatyzer_desktop.actions.base import BaseAction
+from automatyzer_desktop.utils.image_utils import find_image_on_screen
 
 
 class ClickAction(BaseAction):

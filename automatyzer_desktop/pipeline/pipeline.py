@@ -14,7 +14,7 @@ Pipeline to sekwencja kroków wykonywanych w określonej kolejności.
 import logging
 import time
 from typing import Any, Dict, Optional, Callable, List, Union
-from automation_bot.pipeline.step import PipelineStep
+from automatyzer_desktop.pipeline.step import PipelineStep
 
 
 class Pipeline:

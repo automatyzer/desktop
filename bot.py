@@ -25,7 +25,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler("automation_bot.log"),
+        logging.FileHandler("automatyzer_desktop.log"),
         logging.StreamHandler()
     ]
 )

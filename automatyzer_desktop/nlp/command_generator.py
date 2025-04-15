@@ -13,7 +13,7 @@ Przekształca strukturę intencji na kod DSL do wykonania przez bota.
 
 import logging
 from typing import Dict, List, Any, Optional, Tuple
-from automation_bot.nlp.intent_parser import IntentData
+from automatyzer_desktop.nlp.intent_parser import IntentData
 
 
 class CommandGenerator:
