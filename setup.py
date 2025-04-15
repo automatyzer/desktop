@@ -74,7 +74,7 @@ EXTRAS['all'] = [pkg for group in EXTRAS.values() for pkg in group]
 
 # Długi opis z pliku README.md
 try:
-    with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'README.md'), encoding="utf-8') as f:
+    with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), "README.md"), encoding="utf-8") as f:
         LONG_DESCRIPTION = '\n' + f.read()
 except FileNotFoundError:
     LONG_DESCRIPTION = ''
@@ -82,7 +82,7 @@ except FileNotFoundError:
 # Konfiguracja instalacji
 setup(
     name="automatyzer_desktop",
-    version="0.1.4",
+    version="0.1.5",
     description="Bot do automatyzacji zadań poprzez Remote Desktop",
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
